@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Nos Leaders</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/styles/app.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <style type="text/css">
+        /* FontAwesome for working BootSnippet :> */
+        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+    </style>
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script data-require="angular.js@*" data-semver="1.3.15" src="https://code.angularjs.org/1.3.15/angular.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="controllers/paginator.js"></script>
+</head>
+<body ng-app="profiles" ng-controller="ProfilesController">
+    <div class="header-short">
+        <h3>« Renforcement de l’accès et l’engagement des femmes et jeunes filles à des postes électifs, à la consolidation de la Paix au Burkina Faso. »</h3>
+    </div>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="static/images/logo_bn.PNG">
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Nos Leaders</a></li> 
+        <li><a href="#">A propos du projet</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="http://beog-neere.org" target="_blank">Qui Sommes Nous</a></li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="row">
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1 class="gallery-title">Nos Leaders</h1>
+            <div align="center"><br/>
+                <p>Cliquez ci-dessous sur le nom d'une region pour filtrer les données ou simplement tappez des mots clés dans la barre de recherche.</p>
+            </div><br/>
+            <div align="center">
+                <button class="btn btn-default filter-button active" data-filter="all">Toutes</button>
+                <button class="btn btn-default filter-button" data-filter="hdpe">Cascades</button>
+                <button class="btn btn-default filter-button" data-filter="sprinkle">Centre</button>
+                <button class="btn btn-default filter-button" data-filter="spray">Centre-Nord</button>
+                <button class="btn btn-default filter-button" data-filter="spray">Est</button>
+                <button class="btn btn-default filter-button" data-filter="irrigation">Hauts-Bassins</button>
+                <button class="btn btn-default filter-button" data-filter="spray">Plateau Central</button>
+                <button class="btn btn-default filter-button" data-filter="irrigation">Sahel</button>
+                <button class="btn btn-default filter-button" data-filter="irrigation">Sud-Ouest</button>
+                <input type="text" ng-model="filterName" ng-change="filterNameChanged()" class="btn btn-default search-box" placeholder="Search">
+            </div>
+        </div>
+    </div>
+    <div class="row" id="team"> <br/>
+        <div class="container">
+            <div ng-repeat="p in filteredProfiles = (profiles | filter:filterName) | limitTo:12:12*(page-1)" class="gallery_product col-xs-12 col-sm-6 col-md-4 filter {{p.region}}">
+
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src={{p.img_src}}></p>
+                                    <h4 class="card-title">{{p.name}}</h4>
+                                    <p class="card-text">{{p.occupation}}</p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">{{p.name}}</h4>
+                                    <p class="card-text">{{p.summary}}</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <!--
+        <uib-pagination class="pagination-sm pagination" total-items="filteredProfiles.length" ng-model="page"
+            ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page=12></uib-pagination>
+        -->
+        <div class="container" align="center">
+            <pagination 
+              ng-model="page"
+              total-items="profiles.length"
+              max-size="maxSize"  
+              boundary-links="true">
+            </pagination>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footerHeader" ></div>
+        <div class="container">
+            <div class="col-md-4" >
+                <h3>A Propos du Projet</h3>
+                <p>
+                    Ce projet financé par la National Endowment for Democracy (NED) vise au Renforcement de l’accès et à l’engagement des femmes et jeunes filles à des postes électifs, à la consolidation de la Paix au Burkina Faso. Initié en Février 2017, le projet est en cours jusqu'en Janvier 2019. Plus de 500 femmes et jeunes filles de 8 regions du Burkina Faso veront leurs capacités renforcées en Leadership et en approches inter-culturelles de consolidation de la paix. Les parténaires locaux de mise en oeuvre sont: ABAC, Burkina 24 et MBDC.
+                </p>
+            </div>
+            
+            <div class="col-md-4">
+                <h3>Merci à Notre Donateur </h3>
+                <a href="http://ned.org" target="_blank" ><img src="static/images/ned_logo.jpg" class="funder_logo"></a>
+            </div>
+            <div class="col-md-4" >
+                <h3>Contactez BEOG NEERE</h3>
+                <ul>
+                    <li>Phone : +226 - 6565 - 0311 </li>
+                    <li>E-mail : contact@beog-neere.org</li>
+                    <li>site web: http://beog-neere.org</li>
+                </ul>
+                <p>
+
+                </p>
+                <ul class="sm">
+                    <li><a href="#" ><img src="https://www.facebook.com/images/fb_icon_325x325.png" class="img-responsive"></a></li>
+                    <li><a href="#" ><img src="https://lh3.googleusercontent.com/00APBMVQh3yraN704gKCeM63KzeQ-zHUi5wK6E9TjRQ26McyqYBt-zy__4i8GXDAfeys=w300" class="img-responsive" ></a></li>
+                    <li><a href="#" ><img src="http://playbookathlete.com/wp-content/uploads/2016/10/twitter-logo-4.png" class="img-responsive"  ></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.getJSON("profiles2.json", function(result){
+                // $.each(result, function(i, field){
+                //     $("div").append(field + " ");
+                // });
+                data = result.profiles;
+                $.each(data, function(i, item) {
+                    console.log(i);
+                    console.log(item);
+                });
+            });
+
+            $(".filter-button").click(function(){
+                var value = $(this).attr('data-filter');
+                
+                if(value == "all")
+                {
+                    //$('.filter').removeClass('hidden');
+                    $('.filter').show('1000');
+                }
+                else
+                {
+                 // $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+                 // $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                    $(".filter").not('.'+value).hide('3000');
+                    $('.filter').filter('.'+value).show('3000');
+                    
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
